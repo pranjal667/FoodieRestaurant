@@ -8,17 +8,23 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    var items: [ItemElement] = []
+    // MARK: - properties
+    @Published var items: [ItemElement] = []
+    @Published var refresh: Bool = false
     let apiGet: NetworkManager
     
+    // MARK: - initialization
     init(apiGet: NetworkManager) {
         self.apiGet = apiGet
+        getDataFromApi()
     }
     
     func getDataFromApi() {
         if let url = URL(string: "https://63fefa26c5c800a72388f5d2.mockapi.io/getRestaurantItems#") {
-            apiGet.getData(requestUrl: url, resultType: Item.self) { result in
-                self.items.append(contentsOf: result)
+            self.apiGet.getData(requestUrl: url, resultType: Item.self) { result in
+                DispatchQueue.main.async {
+                    self.items.append(contentsOf: result)
+                }
             }
         }
     }

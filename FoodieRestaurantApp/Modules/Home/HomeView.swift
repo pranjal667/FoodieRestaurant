@@ -10,13 +10,6 @@ import SwiftUI
 struct HomeView: View {
     // MARK: - properties
     @StateObject private var viewModel: HomeViewModel
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
     
     // MARK: - initilization
     init(viewModel: HomeViewModel) {
@@ -27,33 +20,22 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack {
-                    Text("Hello")
-                    Text("Hello")
-
-                    Text("Hello")
-
-                    Text("Hello")
-
+                LazyVStack(spacing: 50,content: {
                     ForEach(viewModel.items, id: \.self) { item in
-                        Text("item.item")
-//                        Text(item.price)
+                        ItemView(itemImage: item.imageURL, itemName: item.item, itemPrice: item.price, itemDescription: item.description)
                     }
-                }
-                .ignoresSafeArea()
-                .navigationTitle("Foodie Restaurant")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItemGroup(placement: .topBarTrailing) {
-                        Text("search")
-                        Text("cart")
+                    .ignoresSafeArea()
+                    .navigationTitle("Foodie Restaurant")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .topBarTrailing) {
+                            Text("search")
+                            Text("cart")
+                        }
                     }
-                }
-                .toolbarBackground(Color.orange, for: .navigationBar)
-                .toolbarBackground(.visible, for: .navigationBar)
-            }
-            .onAppear {
-                viewModel.getDataFromApi()
+                    .toolbarBackground(Color.orange, for: .navigationBar)
+                    .toolbarBackground(.visible, for: .navigationBar)
+                })
             }
         }
     }
