@@ -12,6 +12,7 @@ struct ItemDetailScreen: View {
     @StateObject var viewModel: ItemDetailViewModel
     @State var quantity: Int = 1
     
+    
     // MARK: - initialization
     init(viewModel: ItemDetailViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -20,7 +21,7 @@ struct ItemDetailScreen: View {
     // MARK: - body
     var body: some View {
         VStack {
-            ItemView(itemImage: viewModel.itemImage, itemName: viewModel.itemName, itemPrice: viewModel.itemPrice, itemDescription: viewModel.itemDescription)
+            ItemDetailView(itemImage: viewModel.itemImage, itemName: viewModel.itemName, itemPrice: viewModel.itemPrice, itemDescription: viewModel.itemDescription)
                 .padding(20)
             
             HStack {
@@ -64,7 +65,7 @@ struct ItemDetailScreen: View {
                 Button(action: {
                     addToCart()
                 }, label: {
-                    Text("Add to cart")
+                    Text("Add NRs. \(quantity * viewModel.itemPrice) to cart")
                 })
                 .buttonBorderShape(.capsule)
                 .buttonStyle(.borderedProminent)
@@ -72,7 +73,6 @@ struct ItemDetailScreen: View {
             }
             Spacer()
         }
-        .ignoresSafeArea()
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.orange, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)

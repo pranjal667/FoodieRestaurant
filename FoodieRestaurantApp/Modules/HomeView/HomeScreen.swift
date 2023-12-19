@@ -9,8 +9,10 @@ import SwiftUI
 
 struct HomeScreen: View {
     // MARK: - properties
+    @EnvironmentObject var item: ItemElement
     @StateObject private var viewModel: HomeViewModel
     @State var image: Image = Image("")
+    
     // MARK: - initilization
     init(viewModel: HomeViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -20,7 +22,7 @@ struct HomeScreen: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVStack(spacing: 50,content: {
+                LazyVStack(spacing: 10,content: {
                     ForEach(viewModel.items, id: \.self) { item in
                         NavigationLink(destination: {
                             ItemDetailScreen(viewModel: ItemDetailViewModel(
@@ -30,7 +32,7 @@ struct HomeScreen: View {
                                 itemDescription: item.description)
                             )
                         }, label: {
-                                ItemView(
+                                ItemListView(
                                     itemImage: item.imageURL,
                                     itemName: item.item,
                                     itemPrice: item.price,
@@ -38,7 +40,9 @@ struct HomeScreen: View {
                                 )
                                 .tint(Color.black)
                         })
-                        .padding([.leading, .trailing],20)
+                        .padding([.top, .leading, .trailing], 10)
+                        
+                        Divider()
                     }
                 })
                 .ignoresSafeArea()
@@ -48,6 +52,11 @@ struct HomeScreen: View {
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Image(systemName: "magnifyingglass.circle")
                         Image(systemName: "cart.circle")
+                            .overlay {
+                                NavigationLink("") {
+                                    CartScreen(viewModel: CartViewModel())
+                                }
+                            }
                     }
                 }
                 .toolbarBackground(Color.orange, for: .navigationBar)
