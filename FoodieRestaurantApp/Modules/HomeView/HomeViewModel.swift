@@ -16,7 +16,6 @@ class HomeViewModel: ObservableObject {
     // MARK: - initialization
     init(apiGet: NetworkManager) {
         self.apiGet = apiGet
-        getDataFromApi()
     }
     
     func getDataFromApi() {

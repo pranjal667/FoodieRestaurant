@@ -11,7 +11,7 @@ import SwiftUI
 struct FoodieRestaurantAppApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView(viewModel: HomeViewModel(apiGet: NetworkManager()))
+            HomeScreen(viewModel: HomeViewModel(apiGet: NetworkManager()))
         }
     }
 }

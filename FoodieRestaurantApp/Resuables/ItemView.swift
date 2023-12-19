@@ -2,7 +2,7 @@
 //  ItemView.swift
 //  FoodieRestaurantApp
 //
-//  Created by ebpearls on 18/12/2023.
+//  Created by Pranjal on 18/12/2023.
 //
 
 import SwiftUI
