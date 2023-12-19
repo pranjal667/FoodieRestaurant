@@ -12,6 +12,8 @@ struct HomeScreen: View {
     @EnvironmentObject var item: ItemElement
     @StateObject private var viewModel: HomeViewModel
     @State var image: Image = Image("")
+    @State var itemQuantity: Int = 0
+    @State var cartArray: [ItemElement] = []
     
     // MARK: - initilization
     init(viewModel: HomeViewModel) {
@@ -22,7 +24,7 @@ struct HomeScreen: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVStack(spacing: 10,content: {
+                VStack(spacing: 10,content: {
                     ForEach(viewModel.items, id: \.self) { item in
                         NavigationLink(destination: {
                             ItemDetailScreen(viewModel: ItemDetailViewModel(
@@ -37,7 +39,9 @@ struct HomeScreen: View {
                                     itemName: item.item,
                                     itemPrice: item.price,
                                     itemDescription: item.description
-                                )
+                                ) {
+                                    itemQuantity += 1
+                                }
                                 .tint(Color.black)
                         })
                         .padding([.top, .leading, .trailing], 10)
@@ -53,6 +57,13 @@ struct HomeScreen: View {
                         Image(systemName: "magnifyingglass.circle")
                         Image(systemName: "cart.circle")
                             .overlay {
+                                ZStack {
+                                    Text(String(itemQuantity))
+                                        .tint(Color.red)
+                                }
+                                .offset(x:15,y: -7)
+                            }
+                            .overlay {
                                 NavigationLink("") {
                                     CartScreen(viewModel: CartViewModel())
                                 }
@@ -61,6 +72,13 @@ struct HomeScreen: View {
                 }
                 .toolbarBackground(Color.orange, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
+            }
+            .overlay {
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                }
             }
         }
         .onAppear {

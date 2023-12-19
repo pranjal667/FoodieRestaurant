@@ -2,7 +2,7 @@
 //  ItemListView.swift
 //  FoodieRestaurantApp
 //
-//  Created by ebpearls on 19/12/2023.
+//  Created by Pranjal on 19/12/2023.
 //
 
 import SwiftUI
@@ -12,6 +12,9 @@ struct ItemListView: View {
     var itemName: String
     var itemPrice: Int
     var itemDescription: String
+    var itemQuantity: Int = 0
+    var action: (() -> Void)?
+   @State var isTapped: Bool = false
     
     var body: some View {
         HStack(alignment: .top) {
@@ -19,7 +22,7 @@ struct ItemListView: View {
                 switch data {
                 case .failure:
                     Image("")
-                
+                    
                 case .success(let image):
                     image
                         .resizable()
@@ -33,7 +36,7 @@ struct ItemListView: View {
                     Image("")
                 }
             }
-                .frame(width: 100, height: 100)
+            .frame(width: 100, height: 100)
             VStack(alignment: .leading) {
                 Text(itemName)
                     .font(.title)
@@ -42,8 +45,22 @@ struct ItemListView: View {
                     .font(.title2)
             }
             Spacer()
-            Text("NRs. " + String(itemPrice))
-                .font(.title2)
+            
+            VStack {
+                Text("NRs. " + String(itemPrice))
+                    .font(.title2)
+                
+                Button(action: {
+                   action?()
+                    isTapped = true
+                }, label: {
+                    Text("Add to cart")
+                })
+                .buttonBorderShape(.capsule)
+                .buttonStyle(.borderedProminent)
+                .tint(Color.orange)
+                .disabled(isTapped)
+            }
         }
     }
 }

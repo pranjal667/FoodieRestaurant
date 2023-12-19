@@ -11,6 +11,7 @@ class HomeViewModel: ObservableObject {
     // MARK: - properties
     @Published var items: [ItemElement] = []
     @Published var refresh: Bool = false
+    @Published var isLoading: Bool = false
     let apiGet: NetworkManager
     
     // MARK: - initialization

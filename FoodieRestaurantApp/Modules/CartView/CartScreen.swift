@@ -19,8 +19,11 @@ struct CartScreen: View {
     // MARK: - body
     var body: some View {
         VStack {
-            
+            Text("123")
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.orange, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 
