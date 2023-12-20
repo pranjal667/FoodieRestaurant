@@ -12,8 +12,6 @@ struct HomeScreen: View {
     @EnvironmentObject var item: ItemElement
     @StateObject private var viewModel: HomeViewModel
     @State var image: Image = Image("")
-    @State var itemQuantity: Int = 0
-    @State var cartArray: [ItemElement] = []
     
     // MARK: - initilization
     init(viewModel: HomeViewModel) {
@@ -25,7 +23,7 @@ struct HomeScreen: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 10,content: {
-                    ForEach(viewModel.items, id: \.self) { item in
+                    ForEach(viewModel.searchText.isEmpty ? viewModel.items : viewModel.filteredSearchList, id: \.self) { item in
                         NavigationLink(destination: {
                             ItemDetailScreen(viewModel: ItemDetailViewModel(
                                 itemImage: item.imageURL,
@@ -40,7 +38,7 @@ struct HomeScreen: View {
                                     itemPrice: item.price,
                                     itemDescription: item.description
                                 ) {
-                                    itemQuantity += 1
+                                    viewModel.itemQuantity += 1
                                 }
                                 .tint(Color.black)
                         })
@@ -53,12 +51,11 @@ struct HomeScreen: View {
                 .navigationTitle("Foodie Restaurant")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItemGroup(placement: .topBarTrailing) {
-                        Image(systemName: "magnifyingglass.circle")
+                    ToolbarItem(placement: .topBarTrailing) {
                         Image(systemName: "cart.circle")
                             .overlay {
                                 ZStack {
-                                    Text(String(itemQuantity))
+                                    Text(String(viewModel.itemQuantity))
                                         .tint(Color.red)
                                 }
                                 .offset(x:15,y: -7)
@@ -81,6 +78,7 @@ struct HomeScreen: View {
                 }
             }
         }
+        .searchable(text: $viewModel.searchText, prompt: "Search for Items")
         .onAppear {
             viewModel.getDataFromApi()
         }

@@ -12,7 +12,14 @@ class HomeViewModel: ObservableObject {
     @Published var items: [ItemElement] = []
     @Published var refresh: Bool = false
     @Published var isLoading: Bool = false
+    @Published var itemQuantity: Int = 0
+    @Published var cartArray: Item = []
+    @Published var searchText: String = ""
     let apiGet: NetworkManager
+    
+    var filteredSearchList: Item {
+        return items.filter {$0.item.localizedCaseInsensitiveContains(searchText)}
+    }
     
     // MARK: - initialization
     init(apiGet: NetworkManager) {
