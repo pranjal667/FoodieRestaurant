@@ -11,10 +11,9 @@ class HomeViewModel: ObservableObject {
     // MARK: - properties
     @Published var items: [ItemElement] = []
     @Published var refresh: Bool = false
-    @Published var isLoading: Bool = false
     @Published var itemQuantity: Int = 0
-    @Published var cartArray: Item = []
     @Published var searchText: String = ""
+    @Published var cartArray: Item = []
     let apiGet: NetworkManager
     
     var filteredSearchList: Item {
@@ -26,6 +25,7 @@ class HomeViewModel: ObservableObject {
         self.apiGet = apiGet
     }
     
+    // MARK: - getDataFromApi
     func getDataFromApi() {
         if let url = URL(string: "https://63fefa26c5c800a72388f5d2.mockapi.io/getRestaurantItems#") {
             self.apiGet.getData(requestUrl: url, resultType: Item.self) { result in

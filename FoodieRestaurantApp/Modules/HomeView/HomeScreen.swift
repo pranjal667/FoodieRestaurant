@@ -36,9 +36,11 @@ struct HomeScreen: View {
                                     itemImage: item.imageURL,
                                     itemName: item.item,
                                     itemPrice: item.price,
-                                    itemDescription: item.description
+                                    itemDescription: item.description,
+                                    isCartView: false
                                 ) {
                                     viewModel.itemQuantity += 1
+                                    viewModel.cartArray.append(item)
                                 }
                                 .tint(Color.black)
                         })
@@ -62,20 +64,13 @@ struct HomeScreen: View {
                             }
                             .overlay {
                                 NavigationLink("") {
-                                    CartScreen(viewModel: CartViewModel())
+                                    CartScreen(viewModel: CartViewModel(cartItems: viewModel.cartArray))
                                 }
                             }
                     }
                 }
                 .toolbarBackground(Color.orange, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
-            }
-            .overlay {
-                if viewModel.isLoading {
-                    ProgressView("Loading...")
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                }
             }
         }
         .searchable(text: $viewModel.searchText, prompt: "Search for Items")

@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ItemDetailScreen: View {
     // MARK: - properties
-    @StateObject var viewModel: ItemDetailViewModel
-    @State var quantity: Int = 1
-    
+    @StateObject var viewModel: ItemDetailViewModel    
     
     // MARK: - initialization
     init(viewModel: ItemDetailViewModel) {
@@ -26,7 +24,6 @@ struct ItemDetailScreen: View {
             
             HStack {
                 Button(action: {
-                    decreaseQuantity()
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
@@ -37,7 +34,7 @@ struct ItemDetailScreen: View {
                             .tint(Color.white)
                     }
                     .onTapGesture {
-                        decreaseQuantity()
+                        viewModel.decreaseQuantity()
                     }
                     
                     ZStack {
@@ -45,7 +42,7 @@ struct ItemDetailScreen: View {
                             .frame(width: 50, height: 25)
                             .tint(Color.black)
                         
-                        Text(String(quantity))
+                        Text(String(viewModel.quantity))
                             .tint(Color.white)
                     }
                     
@@ -58,14 +55,14 @@ struct ItemDetailScreen: View {
                             .tint(Color.white)
                     }
                     .onTapGesture {
-                        increaseQuantity()
+                        viewModel.increaseQuantity()
                     }
                 })
                 
                 Button(action: {
-                    addToCart()
+                    viewModel.addToCart()
                 }, label: {
-                    Text("Add NRs. \(quantity * viewModel.itemPrice) to cart")
+                    Text("Add NRs. \(viewModel.quantity * viewModel.itemPrice) to cart")
                 })
                 .buttonBorderShape(.capsule)
                 .buttonStyle(.borderedProminent)
@@ -76,22 +73,8 @@ struct ItemDetailScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.orange, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-    }
-    
-    func decreaseQuantity() {
-        if quantity == 0 {
-            quantity = 0
-        } else {
-            quantity -= 1
-        }
-    }
-    
-    func increaseQuantity() {
-        quantity += 1
-    }
-    
-    func addToCart() {
-        
+        .navigationBarBackButtonHidden()
+        .backButton()
     }
 }
 
