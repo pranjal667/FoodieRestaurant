@@ -70,6 +70,7 @@ struct ItemDetailScreen: View {
             }
             Spacer()
         }
+        .navigationTitle(viewModel.itemName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.orange, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)

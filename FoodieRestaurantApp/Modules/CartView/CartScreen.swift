@@ -63,6 +63,7 @@ struct CartScreen: View {
                 .foregroundStyle(Color.orange)
                 .disabled(viewModel.cartItems.isEmpty)
         }
+        .navigationTitle("Cart")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color.orange, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
