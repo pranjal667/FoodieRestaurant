@@ -10,12 +10,14 @@ import SwiftUI
 struct ItemListView: View {
     var itemImage: String
     var itemName: String
-    var itemPrice: Int
+    @State var itemPrice: Int
     var itemDescription: String
     @State var itemQuantity: Int = 1
     var isCartView: Bool
-    var addToCartAction: (() -> Void)?
     @State var isTapped: Bool = false
+    @State var totalPrice: Int = 1
+    var totalClosure: ((String, Int) -> Void)?
+    var addToCartAction: (() -> Void)?
     
     var body: some View {
         VStack {
@@ -49,7 +51,7 @@ struct ItemListView: View {
                 Spacer()
                 
                 VStack {
-                    Text("NRs. " + String(itemPrice))
+                    Text("NRs. " + String(itemPrice * itemQuantity))
                         .font(.title2)
                     
                     if !isCartView {
@@ -64,42 +66,48 @@ struct ItemListView: View {
                         .tint(Color.orange)
                         .disabled(isTapped)
                     } else {
-                        Button(action: {
-    //                            viewModel.decreaseQuantity()
-                        }, label: {
-                            ZStack {
-                                RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
-                                    .frame(width: 25, height: 25)
-                                    .tint(Color.black)
+                        VStack {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
+                                        .frame(width: 25, height: 25)
+                                        .tint(Color.black)
+                                    
+                                    Image(systemName: "minus")
+                                        .tint(Color.white)
+                                }
+                                .onTapGesture {
+                                    if itemQuantity > 1 {
+                                        itemQuantity -= 1
+                                    }
+                                    totalPrice = itemPrice * itemQuantity
+                                    totalClosure?(itemName,totalPrice)
+                                }
                                 
-                                Image(systemName: "minus")
-                                    .tint(Color.white)
-                            }
-                            .onTapGesture {
-                                itemQuantity -= 1
-                            }
-                            
-                            ZStack {
-                                RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
-                                    .frame(width: 50, height: 25)
-                                    .tint(Color.black)
+                                ZStack {
+                                    RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
+                                        .frame(width: 50, height: 25)
+                                        .tint(Color.black)
+                                    
+                                    Text(String(itemQuantity))
+                                        .tint(Color.white)
+                                }
                                 
-                                Text(String(itemQuantity))
-                                    .tint(Color.white)
+                                ZStack {
+                                    RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
+                                        .frame(width: 25, height: 25)
+                                        .tint(Color.black)
+                                    
+                                    Image(systemName: "plus")
+                                        .tint(Color.white)
+                                }
+                                .onTapGesture {
+                                    itemQuantity += 1
+                                    totalPrice = itemPrice * itemQuantity
+                                    totalClosure?(itemName,totalPrice)
+                                }
                             }
-                            
-                            ZStack {
-                                RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
-                                    .frame(width: 25, height: 25)
-                                    .tint(Color.black)
-                                
-                                Image(systemName: "plus")
-                                    .tint(Color.white)
-                            }
-                            .onTapGesture {
-                                itemQuantity += 1
-                            }
-                        })
+                        }
                     }
                 }
             }

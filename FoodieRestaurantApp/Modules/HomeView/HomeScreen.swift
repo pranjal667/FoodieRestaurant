@@ -40,6 +40,7 @@ struct HomeScreen: View {
                                     isCartView: false
                                 ) {
                                     viewModel.itemQuantity += 1
+                                    let item = CartItem(item: item.item, description: item.description, taxable: item.taxable, imageURL: item.imageURL, price: item.price, id: item.id)
                                     viewModel.cartArray.append(item)
                                 }
                                 .tint(Color.black)
@@ -54,19 +55,17 @@ struct HomeScreen: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
-                        Image(systemName: "cart.circle")
-                            .overlay {
-                                ZStack {
-                                    Text(String(viewModel.itemQuantity))
-                                        .tint(Color.red)
-                                }
-                                .offset(x:15,y: -7)
+                        NavigationLink(destination: {
+                            CartScreen(viewModel: CartViewModel(cartItems: viewModel.cartArray))
+                        }, label: {
+                            Image(systemName: "cart.circle")
+                                .foregroundStyle(Color.black)
+                        })
+                        .overlay {
+                            if viewModel.itemQuantity > 0 {
+                                BadgeView(count: viewModel.itemQuantity)
                             }
-                            .overlay {
-                                NavigationLink("") {
-                                    CartScreen(viewModel: CartViewModel(cartItems: viewModel.cartArray))
-                                }
-                            }
+                        }
                     }
                 }
                 .toolbarBackground(Color.orange, for: .navigationBar)

@@ -10,6 +10,9 @@ import SwiftUI
 struct CartScreen: View {
     // MARK: - properties
     @StateObject var viewModel: CartViewModel
+    @State var itemName: String = ""
+    @State var itemAmount: Int = 1
+    @State var show: Bool = false
     
     // MARK: - initialization
     init(viewModel: CartViewModel) {
@@ -21,7 +24,7 @@ struct CartScreen: View {
         ScrollView {
             VStack(spacing: 10,content: {
                 if !viewModel.cartItems.isEmpty {
-                    ForEach(viewModel.cartItems, id: \.self) { item in
+                    ForEach(viewModel.cartItems) { item in
                         NavigationLink(destination: {
                             ItemDetailScreen(viewModel: ItemDetailViewModel(
                                 itemImage: item.imageURL,
@@ -30,14 +33,17 @@ struct CartScreen: View {
                                 itemDescription: item.description)
                             )
                         }, label: {
-                            ItemListView(
+                            ItemListView(                                
                                 itemImage: item.imageURL,
                                 itemName: item.item,
                                 itemPrice: item.price,
                                 itemDescription: item.description,
-                                isCartView: true
-                            ) {
-                            }
+                                isCartView: true, 
+                                totalClosure: { itemName,totalPrice in
+                                    viewModel.checkoutItem.append(CheckoutItem(name: itemName, amount: totalPrice))
+                                },
+                                addToCartAction: {}
+                            )
                             .tint(Color.black)
                         })
                         .padding([.top, .leading, .trailing], 10)
@@ -52,16 +58,28 @@ struct CartScreen: View {
             
             Divider()
             
-            RoundedRectangle(cornerSize: CGSize(width: 25, height: 50))
-                .overlay {
-                    NavigationLink("Checkout") {
-                            EmptyView()
+//            RoundedRectangle(cornerSize: CGSize(width: 25, height: 50))
+//                .overlay {
+                    Button("Checkout") {
+                        show.toggle()
                     }
+                    .frame(width: 200, height: 50)
+                    .disabled(viewModel.cartItems.isEmpty)
+                    .buttonBorderShape(.capsule)
                     .foregroundStyle(Color.white)
-                }
-                .frame(width: 200, height: 50, alignment: .center)
-                .foregroundStyle(Color.orange)
-                .disabled(viewModel.cartItems.isEmpty)
+                    .background(Color.orange)
+                    .navigationDestination(isPresented: $show, destination: {
+                        CheckoutScreen(viewModel: CheckoutViewModel(checkoutItem: viewModel.checkoutItem))
+                    })
+//                                        NavigationLink("Checkout") {
+//                                            CheckoutScreen(viewModel: CheckoutViewModel(checkoutItem: viewModel.checkoutItem))
+//                                        }
+//                    .foregroundStyle(Color.white)
+//                }
+
+        }
+        .onAppear {
+            viewModel.checkoutItem.removeAll()
         }
         .navigationTitle("Cart")
         .navigationBarTitleDisplayMode(.inline)
@@ -74,5 +92,5 @@ struct CartScreen: View {
 
 // MARK: - preview
 #Preview {
-    CartScreen(viewModel: CartViewModel(cartItems: Item()))
+    CartScreen(viewModel: CartViewModel(cartItems: [CartItem]()))
 }

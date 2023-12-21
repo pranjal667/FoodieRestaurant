@@ -13,7 +13,7 @@ class HomeViewModel: ObservableObject {
     @Published var refresh: Bool = false
     @Published var itemQuantity: Int = 0
     @Published var searchText: String = ""
-    @Published var cartArray: Item = []
+    @Published var cartArray: [CartItem] = []
     let apiGet: NetworkManager
     
     var filteredSearchList: Item {

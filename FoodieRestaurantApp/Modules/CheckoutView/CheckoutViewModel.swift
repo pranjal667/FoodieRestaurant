@@ -7,6 +7,13 @@
 
 import Foundation
 
-class CheckoutViewModel {
+class CheckoutViewModel: ObservableObject {
+    // MARK: - properties
+//    @Published var cartItems: [CartItem]
+    @Published var checkoutItem: [CheckoutItem]
     
+    // MARK: - initialization
+    init(checkoutItem: [CheckoutItem]) {
+        self.checkoutItem = checkoutItem
+    }
 }
