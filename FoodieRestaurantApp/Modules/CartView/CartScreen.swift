@@ -49,7 +49,7 @@ struct CartScreen: View {
                                 itemDescription: item.description,
                                 isCartView: true,
                                 totalClosure: { itemName,totalPrice in
-                                    viewModel.checkoutItem.append(CheckoutItem(name: itemName, amount: totalPrice))
+                                    viewModel.checkoutItem.append(CheckoutItem(name: itemName, amount: totalPrice, taxable: item.taxable))
                                 },
                                 addToCartAction: { _ in }
                             )

@@ -8,7 +8,6 @@
 import Foundation
 
 struct CartItem: Identifiable {
-//    var posDisplayCategoryID: Int
     var item, description: String
     var taxable: Bool
     var imageURL: String

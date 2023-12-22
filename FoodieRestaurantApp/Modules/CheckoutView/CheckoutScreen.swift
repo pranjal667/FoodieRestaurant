@@ -15,36 +15,101 @@ struct CheckoutScreen: View {
     init(viewModel: CheckoutViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
+    
     // MARK: - body
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 VStack {
-                    Text("Payment Details")
+                    VStack(alignment: .leading, spacing: 20) {
+                        VStack(alignment: .leading) {
+                            Text ("Enter your Contact No.: ")
+                            TextField("Contact No.", text: $viewModel.contactNo)
+                                .overlay(content: {
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .border(Color.black)
+                                        .foregroundStyle(Color.clear)
+                                })
+                                .onChange(of: viewModel.contactNo, perform: { value in
+                                    viewModel.isEmpty = false
+                                })
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text ("Enter your Delivery Address: ")
+                            TextField("Address", text: $viewModel.address)
+                                .overlay(content: {
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .border(Color.black)
+                                        .foregroundStyle(Color.clear)
+                                })
+                                .onChange(of: viewModel.contactNo, perform: { value in
+                                    viewModel.isEmpty = false
+                                })
+                        }
+                    }
+                    .padding(.bottom, 100)
                     
-                    ForEach(viewModel.checkoutItem, id: \.self) { item in
+                    VStack {
+                        Text("Payment Details")
+                        
+                        ForEach(viewModel.checkoutItem, id: \.self) { item in
+                            HStack {
+                                Text(item.name)
+                                
+                                Spacer()
+                                
+                                Text("NRs. " + String(item.amount))
+                                    .onAppear {
+                                        viewModel.totalAmount += item.amount
+                                    }
+                            }
+                        }
+                        
+                        Divider()
+                        Divider()
+                        
                         HStack {
-                            Text(item.name)
+                            Text("Total")
                             
                             Spacer()
                             
-                            Text("NRs. " + String(item.amount))
+                            Text("NRs. " + "\(viewModel.totalAmount)")
                         }
                     }
+                    
+                    if viewModel.isEmpty {
+                        Text("Contact or address cannot be empty!!!")
+                            .foregroundColor(.red)
+                            .padding(.top, 100)
+                    } else {
+                        Text("Please make sure you have entered correct contact details before confirming order.")
+                            .padding(.top, 100)
+                    }
                 }
-                Divider()
+                .padding()
+
+                Button(action: {
+                    viewModel.checkForEmptyText()
+                }, label: {
+                    Text("Confirm")
+                })
+                .frame(width: 300, height: 50)
+                .buttonBorderShape(.capsule)
+                .buttonStyle(.borderedProminent)
+                .tint(Color.orange)
+                .disabled(viewModel.isEmpty)
+                .navigationDestination(isPresented: $viewModel.confirmOrder) {
+                    EmptyView()
+                }
             }
-            .padding()
-            .onAppear {
-                print(viewModel.checkoutItem)
-            }
+            .navigationTitle("Checkout")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color.orange, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .navigationBarBackButtonHidden()
+            .backButton()
         }
-        .navigationTitle("Checkout")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color.orange, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .navigationBarBackButtonHidden()
-        .backButton()
     }
 }
 

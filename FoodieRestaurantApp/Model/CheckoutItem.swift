@@ -10,4 +10,5 @@ import Foundation
 struct CheckoutItem: Hashable {
     var name: String
     var amount: Int
+    var taxable: Bool
 }

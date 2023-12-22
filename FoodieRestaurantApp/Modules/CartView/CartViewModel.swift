@@ -18,7 +18,7 @@ class CartViewModel: ObservableObject {
     }
     
     // MARK: - convertToCheckoutItem
-    func convertToCheckoutItem(name: String, amount: Int) {
-        checkoutItem.append(CheckoutItem(name: name, amount: amount))
+    func convertToCheckoutItem(name: String, amount: Int, taxable: Bool) {
+        checkoutItem.append(CheckoutItem(name: name, amount: amount, taxable: taxable))
     }
 }
