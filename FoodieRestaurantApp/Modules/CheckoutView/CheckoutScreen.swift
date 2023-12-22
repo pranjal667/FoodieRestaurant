@@ -21,16 +21,20 @@ struct CheckoutScreen: View {
             VStack(alignment: .leading) {
                 VStack {
                     Text("Payment Details")
+                    
                     ForEach(viewModel.checkoutItem, id: \.self) { item in
                         HStack {
                             Text(item.name)
+                            
                             Spacer()
-                            Text(String(item.amount))
+                            
+                            Text("NRs. " + String(item.amount))
                         }
                     }
                 }
                 Divider()
             }
+            .padding()
             .onAppear {
                 print(viewModel.checkoutItem)
             }

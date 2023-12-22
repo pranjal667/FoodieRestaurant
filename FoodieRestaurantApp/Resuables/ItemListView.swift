@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct ItemListView: View {
+    // MARK: - properties
+    @State var itemQuantity: Int = 1
+    @State var itemPrice: Int
+    @State var isTapped: Bool = false
+    @State var totalPrice: Int
+    @State var updateIsTapped: Bool = false
+    @State var itemId: String
+
     var itemImage: String
     var itemName: String
-    @State var itemPrice: Int
     var itemDescription: String
-    @State var itemQuantity: Int = 1
     var isCartView: Bool
-    @State var isTapped: Bool = false
-    @State var totalPrice: Int = 1
+
     var totalClosure: ((String, Int) -> Void)?
-    var addToCartAction: (() -> Void)?
+    var addToCartAction: ((Bool) -> Void)?
     
+    // MARK: - body
     var body: some View {
-        VStack {
+        VStack {            
             HStack(alignment: .top) {
                 AsyncImage(url: URL(string: itemImage)) { data in
                     switch data {
@@ -51,13 +57,13 @@ struct ItemListView: View {
                 Spacer()
                 
                 VStack {
-                    Text("NRs. " + String(itemPrice * itemQuantity))
+                    Text("NRs. " + String(updateIsTapped ? totalPrice : itemPrice))
                         .font(.title2)
                     
                     if !isCartView {
                         Button(action: {
-                            addToCartAction?()
                             isTapped = true
+                            addToCartAction?(isTapped)
                         }, label: {
                             Text("Add to cart")
                         })
@@ -81,7 +87,7 @@ struct ItemListView: View {
                                         itemQuantity -= 1
                                     }
                                     totalPrice = itemPrice * itemQuantity
-                                    totalClosure?(itemName,totalPrice)
+                                    updateIsTapped = false
                                 }
                                 
                                 ZStack {
@@ -104,9 +110,18 @@ struct ItemListView: View {
                                 .onTapGesture {
                                     itemQuantity += 1
                                     totalPrice = itemPrice * itemQuantity
-                                    totalClosure?(itemName,totalPrice)
+                                    updateIsTapped = false
                                 }
                             }
+                            
+                            Button("Update") {
+                                updateIsTapped = true
+                                totalClosure?(itemName,totalPrice)
+                            }
+                            .buttonBorderShape(.capsule)
+                            .buttonStyle(.borderedProminent)
+                            .tint(Color.black)
+                            .disabled(isTapped)
                         }
                     }
                 }
@@ -115,6 +130,7 @@ struct ItemListView: View {
     }
 }
 
+// MARK: - preview
 #Preview {
-    ItemListView(itemImage: "https://loremflickr.com/640/480/food", itemName: "Item1", itemPrice: 7, itemDescription: "Item1 Description", isCartView: false)
+    ItemListView(itemPrice: 7, totalPrice: 50, itemId: "1", itemImage: "https://loremflickr.com/640/480/food", itemName: "Item1", itemDescription: "Item1 Description", isCartView: true)
 }

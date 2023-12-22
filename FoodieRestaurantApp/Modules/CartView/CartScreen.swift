@@ -23,6 +23,10 @@ struct CartScreen: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10,content: {
+                Text("After updating the required quantity by tapping the '+' and '-' button, please press 'Update' button before pressing 'Checkout' !")
+                    .font(.callout)
+                    .padding(10)
+                
                 if !viewModel.cartItems.isEmpty {
                     ForEach(viewModel.cartItems) { item in
                         NavigationLink(destination: {
@@ -30,19 +34,24 @@ struct CartScreen: View {
                                 itemImage: item.imageURL,
                                 itemName: item.item,
                                 itemPrice: item.price,
-                                itemDescription: item.description)
+                                itemDescription: item.description, 
+                                isAddedToCart: true,
+                                itemId: item.id, 
+                                listItemId: item.id)
                             )
                         }, label: {
-                            ItemListView(                                
+                            ItemListView(
+                                itemPrice: item.price,
+                                totalPrice: item.price, 
+                                itemId: item.id, 
                                 itemImage: item.imageURL,
                                 itemName: item.item,
-                                itemPrice: item.price,
                                 itemDescription: item.description,
-                                isCartView: true, 
+                                isCartView: true,
                                 totalClosure: { itemName,totalPrice in
                                     viewModel.checkoutItem.append(CheckoutItem(name: itemName, amount: totalPrice))
                                 },
-                                addToCartAction: {}
+                                addToCartAction: { _ in }
                             )
                             .tint(Color.black)
                         })
@@ -58,25 +67,16 @@ struct CartScreen: View {
             
             Divider()
             
-//            RoundedRectangle(cornerSize: CGSize(width: 25, height: 50))
-//                .overlay {
-                    Button("Checkout") {
-                        show.toggle()
-                    }
-                    .frame(width: 200, height: 50)
-                    .disabled(viewModel.cartItems.isEmpty)
-                    .buttonBorderShape(.capsule)
-                    .foregroundStyle(Color.white)
-                    .background(Color.orange)
-                    .navigationDestination(isPresented: $show, destination: {
-                        CheckoutScreen(viewModel: CheckoutViewModel(checkoutItem: viewModel.checkoutItem))
-                    })
-//                                        NavigationLink("Checkout") {
-//                                            CheckoutScreen(viewModel: CheckoutViewModel(checkoutItem: viewModel.checkoutItem))
-//                                        }
-//                    .foregroundStyle(Color.white)
-//                }
-
+            Button("Checkout") {
+                show.toggle()
+            }
+            .frame(width: 200, height: 50)
+            .disabled(viewModel.cartItems.isEmpty)
+            .foregroundStyle(Color.white)
+            .background(Color.orange)
+            .navigationDestination(isPresented: $show, destination: {
+                CheckoutScreen(viewModel: CheckoutViewModel(checkoutItem: viewModel.checkoutItem))
+            })
         }
         .onAppear {
             viewModel.checkoutItem.removeAll()

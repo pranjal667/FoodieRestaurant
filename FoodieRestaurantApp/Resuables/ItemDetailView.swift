@@ -12,6 +12,7 @@ struct ItemDetailView: View {
     var itemName: String
     var itemPrice: Int
     var itemDescription: String
+    var itemId: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -50,5 +51,5 @@ struct ItemDetailView: View {
 }
 
 #Preview {
-    ItemDetailView(itemImage: "https://loremflickr.com/640/480/food", itemName: "Item1", itemPrice: 7, itemDescription: "Item1 Description")
+    ItemDetailView(itemImage: "https://loremflickr.com/640/480/food", itemName: "Item1", itemPrice: 7, itemDescription: "Item1 Description", itemId: "1")
 }

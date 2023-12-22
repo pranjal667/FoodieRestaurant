@@ -12,6 +12,8 @@ struct HomeScreen: View {
     @EnvironmentObject var item: ItemElement
     @StateObject private var viewModel: HomeViewModel
     @State var image: Image = Image("")
+    @State var isAddedToCart: Bool = false
+    @State var cartItemId: String = ""
     
     // MARK: - initilization
     init(viewModel: HomeViewModel) {
@@ -29,20 +31,26 @@ struct HomeScreen: View {
                                 itemImage: item.imageURL,
                                 itemName: item.item,
                                 itemPrice: item.price,
-                                itemDescription: item.description)
+                                itemDescription: item.description, 
+                                isAddedToCart: isAddedToCart, 
+                                itemId: item.id, 
+                                listItemId: self.cartItemId)
                             )
                         }, label: {
                                 ItemListView(
+                                    itemPrice: item.price, 
+                                    totalPrice: item.price, 
+                                    itemId: item.id, 
                                     itemImage: item.imageURL,
                                     itemName: item.item,
-                                    itemPrice: item.price,
                                     itemDescription: item.description,
-                                    isCartView: false
-                                ) {
-                                    viewModel.itemQuantity += 1
-                                    let item = CartItem(item: item.item, description: item.description, taxable: item.taxable, imageURL: item.imageURL, price: item.price, id: item.id)
-                                    viewModel.cartArray.append(item)
-                                }
+                                    isCartView: false, addToCartAction:  { isAddedToCart in
+                                        self.isAddedToCart = isAddedToCart
+                                        self.cartItemId = item.id
+                                        viewModel.itemQuantity += 1
+                                        let item = CartItem(item: item.item, description: item.description, taxable: item.taxable, imageURL: item.imageURL, price: item.price, id: item.id)
+                                        viewModel.cartArray.append(item)
+                                    })
                                 .tint(Color.black)
                         })
                         .padding([.top, .leading, .trailing], 10)

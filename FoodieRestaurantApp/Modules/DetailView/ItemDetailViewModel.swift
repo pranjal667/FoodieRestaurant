@@ -14,32 +14,33 @@ class ItemDetailViewModel: ObservableObject {
     @Published var itemName: String
     @Published var itemPrice: Int
     @Published var itemDescription: String
+    @Published var isAddedToCart: Bool
+    @Published var itemId: String
     @Published var quantity: Int = 1
+    @Published var listItemId: String
     
     // MARK: - initialization
-    init(itemImage: String, itemName: String, itemPrice: Int, itemDescription: String) {
+    init(itemImage: String, itemName: String, itemPrice: Int, itemDescription: String, isAddedToCart: Bool, itemId: String, listItemId: String) {
         self.itemImage = itemImage
         self.itemName = itemName
         self.itemPrice = itemPrice
         self.itemDescription = itemDescription
+        self.isAddedToCart = isAddedToCart
+        self.itemId = itemId
+        self.listItemId = listItemId
     }
     
-    // MARK: - decreaseQuantity
-    func decreaseQuantity() {
-        if quantity == 0 {
-            quantity = 0
-        } else {
-            quantity -= 1
-        }
-    }
-    
-    // MARK: - decreaseQuantity
-    func increaseQuantity() {
-        quantity += 1
-    }
-    
-    // MARK: - decreaseQuantity
+    // MARK: - addToCart
     func addToCart() {
         
+    }
+    
+    // MARK: - addToCart
+    func checkIfItemIsAdded() {
+        if itemId == listItemId {
+            isAddedToCart = true
+        } else {
+            isAddedToCart = false
+        }
     }
 }

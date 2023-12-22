@@ -19,54 +19,19 @@ struct ItemDetailScreen: View {
     // MARK: - body
     var body: some View {
         VStack {
-            ItemDetailView(itemImage: viewModel.itemImage, itemName: viewModel.itemName, itemPrice: viewModel.itemPrice, itemDescription: viewModel.itemDescription)
+            ItemDetailView(itemImage: viewModel.itemImage, itemName: viewModel.itemName, itemPrice: viewModel.itemPrice, itemDescription: viewModel.itemDescription, itemId: viewModel.itemId)
                 .padding(20)
             
-            HStack {
-                Button(action: {
-                }, label: {
-                    ZStack {
-                        RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
-                            .frame(width: 25, height: 25)
-                            .tint(Color.black)
-                        
-                        Image(systemName: "minus")
-                            .tint(Color.white)
-                    }
-                    .onTapGesture {
-                        viewModel.decreaseQuantity()
-                    }
-                    
-                    ZStack {
-                        RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
-                            .frame(width: 50, height: 25)
-                            .tint(Color.black)
-                        
-                        Text(String(viewModel.quantity))
-                            .tint(Color.white)
-                    }
-                    
-                    ZStack {
-                        RoundedRectangle(cornerSize: CGSize(width:5, height: 5))
-                            .frame(width: 25, height: 25)
-                            .tint(Color.black)
-                        
-                        Image(systemName: "plus")
-                            .tint(Color.white)
-                    }
-                    .onTapGesture {
-                        viewModel.increaseQuantity()
-                    }
-                })
-                
+            HStack {                
                 Button(action: {
                     viewModel.addToCart()
                 }, label: {
-                    Text("Add NRs. \(viewModel.quantity * viewModel.itemPrice) to cart")
+                    Text(viewModel.isAddedToCart ? "Item already in cart" : "Add to cart")
                 })
                 .buttonBorderShape(.capsule)
                 .buttonStyle(.borderedProminent)
                 .tint(Color.orange)
+                .disabled(viewModel.isAddedToCart)
             }
             Spacer()
         }
@@ -76,6 +41,9 @@ struct ItemDetailScreen: View {
         .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarBackButtonHidden()
         .backButton()
+        .onAppear {
+            viewModel.checkIfItemIsAdded()
+        }
     }
 }
 
@@ -84,5 +52,9 @@ struct ItemDetailScreen: View {
         itemImage: "https://loremflickr.com/640/480/food",
         itemName: "Item1", 
         itemPrice: 7,
-        itemDescription: "Item1 Description"))
+        itemDescription: "Item1 Description", 
+        isAddedToCart: true, 
+        itemId: "1", 
+        listItemId: "1")
+    )
 }
