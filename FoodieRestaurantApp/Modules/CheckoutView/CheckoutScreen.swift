@@ -100,7 +100,7 @@ struct CheckoutScreen: View {
                 .tint(Color.orange)
                 .disabled(viewModel.isEmpty)
                 .navigationDestination(isPresented: $viewModel.confirmOrder) {
-                    EmptyView()
+                    SuccessScreen(viewModel: SuccessViewModel())
                 }
             }
             .navigationTitle("Checkout")

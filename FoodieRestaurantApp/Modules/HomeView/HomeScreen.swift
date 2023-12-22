@@ -78,6 +78,7 @@ struct HomeScreen: View {
                 }
                 .toolbarBackground(Color.orange, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
+                .navigationBarBackButtonHidden()
             }
         }
         .searchable(text: $viewModel.searchText, prompt: "Search for Items")
