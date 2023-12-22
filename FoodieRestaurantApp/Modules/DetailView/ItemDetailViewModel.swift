@@ -31,11 +31,6 @@ class ItemDetailViewModel: ObservableObject {
     }
     
     // MARK: - addToCart
-    func addToCart() {
-        
-    }
-    
-    // MARK: - addToCart
     func checkIfItemIsAdded() {
         if itemId == listItemId {
             isAddedToCart = true

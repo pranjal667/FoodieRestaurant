@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ItemDetailScreen: View {
     // MARK: - properties
-    @StateObject var viewModel: ItemDetailViewModel    
+    @StateObject var viewModel: ItemDetailViewModel
+    @Binding var cartArray: [CartItem]
     
     // MARK: - initialization
-    init(viewModel: ItemDetailViewModel) {
+    init(viewModel: ItemDetailViewModel, cartArray: Binding<[CartItem]>) {
         self._viewModel = StateObject(wrappedValue: viewModel)
+        self._cartArray = cartArray
     }
     
     // MARK: - body
@@ -24,7 +26,8 @@ struct ItemDetailScreen: View {
             
             HStack {                
                 Button(action: {
-                    viewModel.addToCart()
+                    addToCart(item: CartItem(item: viewModel.itemName, description: viewModel.itemDescription, taxable: false, imageURL: viewModel.itemImage, price: viewModel.itemPrice, id: viewModel.itemId))
+                    viewModel.isAddedToCart = true
                 }, label: {
                     Text(viewModel.isAddedToCart ? "Item already in cart" : "Add to cart")
                 })
@@ -45,6 +48,11 @@ struct ItemDetailScreen: View {
             viewModel.checkIfItemIsAdded()
         }
     }
+    
+    // MARK: - addToCart
+    func addToCart(item: CartItem) {
+        cartArray.append(item)
+    }
 }
 
 #Preview {
@@ -55,6 +63,7 @@ struct ItemDetailScreen: View {
         itemDescription: "Item1 Description", 
         isAddedToCart: true, 
         itemId: "1", 
-        listItemId: "1")
+        listItemId: "1"),
+                     cartArray: .constant([])
     )
 }

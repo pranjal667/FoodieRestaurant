@@ -30,15 +30,6 @@ struct CartScreen: View {
                 if !viewModel.cartItems.isEmpty {
                     ForEach(viewModel.cartItems) { item in
                         NavigationLink(destination: {
-                            ItemDetailScreen(viewModel: ItemDetailViewModel(
-                                itemImage: item.imageURL,
-                                itemName: item.item,
-                                itemPrice: item.price,
-                                itemDescription: item.description, 
-                                isAddedToCart: true,
-                                itemId: item.id, 
-                                listItemId: item.id)
-                            )
                         }, label: {
                             ItemListView(
                                 itemPrice: item.price,
