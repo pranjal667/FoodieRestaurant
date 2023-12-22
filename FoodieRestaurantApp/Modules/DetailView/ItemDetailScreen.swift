@@ -11,11 +11,13 @@ struct ItemDetailScreen: View {
     // MARK: - properties
     @StateObject var viewModel: ItemDetailViewModel
     @Binding var cartArray: [CartItem]
+    @Binding var itemQuantity: Int
     
     // MARK: - initialization
-    init(viewModel: ItemDetailViewModel, cartArray: Binding<[CartItem]>) {
+    init(viewModel: ItemDetailViewModel, cartArray: Binding<[CartItem]>, itemQuantity: Binding<Int>) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self._cartArray = cartArray
+        self._itemQuantity = itemQuantity
     }
     
     // MARK: - body
@@ -28,6 +30,7 @@ struct ItemDetailScreen: View {
                 Button(action: {
                     addToCart(item: CartItem(item: viewModel.itemName, description: viewModel.itemDescription, taxable: false, imageURL: viewModel.itemImage, price: viewModel.itemPrice, id: viewModel.itemId))
                     viewModel.isAddedToCart = true
+                    itemQuantity += 1
                 }, label: {
                     Text(viewModel.isAddedToCart ? "Item already in cart" : "Add to cart")
                 })
@@ -64,6 +67,6 @@ struct ItemDetailScreen: View {
         isAddedToCart: true, 
         itemId: "1", 
         listItemId: "1"),
-                     cartArray: .constant([])
+                     cartArray: .constant([]), itemQuantity: .constant(1)
     )
 }

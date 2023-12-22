@@ -35,7 +35,7 @@ struct HomeScreen: View {
                                 isAddedToCart: isAddedToCart, 
                                 itemId: item.id, 
                                 listItemId: self.cartItemId),
-                                             cartArray: $viewModel.cartArray
+                                             cartArray: $viewModel.cartArray, itemQuantity: $viewModel.itemQuantity
                             )
                         }, label: {
                                 ItemListView(
