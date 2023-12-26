@@ -7,37 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A38FB322B31465E0049B85E /* ItemDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38FB312B31465E0049B85E /* ItemDetailScreen.swift */; };
-		6A38FB352B3147D20049B85E /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38FB342B3147D20049B85E /* ItemDetailViewModel.swift */; };
-		6A38FB382B3164180049B85E /* CartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38FB372B3164170049B85E /* CartScreen.swift */; };
-		6A38FB3A2B3164250049B85E /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38FB392B3164250049B85E /* CartViewModel.swift */; };
-		6A38FB3C2B3165AF0049B85E /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A38FB3B2B3165AF0049B85E /* ItemListView.swift */; };
-		6A4931F52B303AAF00F8772C /* FoodieRestaurantAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4931F42B303AAF00F8772C /* FoodieRestaurantAppApp.swift */; };
-		6A4931F72B303AAF00F8772C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4931F62B303AAF00F8772C /* HomeScreen.swift */; };
-		6A4931F92B303AB100F8772C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A4931F82B303AB100F8772C /* Assets.xcassets */; };
-		6A4931FD2B303AB100F8772C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A4931FC2B303AB100F8772C /* Preview Assets.xcassets */; };
-		6A4932042B303E6300F8772C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4932032B303E6300F8772C /* NetworkManager.swift */; };
-		6A4932072B303ED000F8772C /* ItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4932062B303ED000F8772C /* ItemElement.swift */; };
-		6A49320E2B304C0900F8772C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A49320D2B304C0900F8772C /* HomeViewModel.swift */; };
-		6A4932112B30678100F8772C /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4932102B30678100F8772C /* ItemDetailView.swift */; };
+		6A7741F72B3A9319009DE503 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741D32B3A9319009DE503 /* NetworkManager.swift */; };
+		6A7741F82B3A9319009DE503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7741D52B3A9319009DE503 /* Assets.xcassets */; };
+		6A7741F92B3A9319009DE503 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A7741D72B3A9319009DE503 /* Preview Assets.xcassets */; };
+		6A7741FA2B3A9319009DE503 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741D92B3A9319009DE503 /* View+Extensions.swift */; };
+		6A7741FB2B3A9319009DE503 /* ItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741DB2B3A9319009DE503 /* ItemElement.swift */; };
+		6A7741FC2B3A9319009DE503 /* CheckoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741DC2B3A9319009DE503 /* CheckoutItem.swift */; };
+		6A7741FD2B3A9319009DE503 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741DD2B3A9319009DE503 /* CartItem.swift */; };
+		6A7741FE2B3A9319009DE503 /* ItemDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741E02B3A9319009DE503 /* ItemDetailScreen.swift */; };
+		6A7741FF2B3A9319009DE503 /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741E12B3A9319009DE503 /* ItemDetailViewModel.swift */; };
+		6A7742002B3A9319009DE503 /* SuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741E32B3A9319009DE503 /* SuccessViewModel.swift */; };
+		6A7742012B3A9319009DE503 /* SuccessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741E42B3A9319009DE503 /* SuccessScreen.swift */; };
+		6A7742022B3A9319009DE503 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741E62B3A9319009DE503 /* HomeViewModel.swift */; };
+		6A7742032B3A9319009DE503 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741E72B3A9319009DE503 /* HomeScreen.swift */; };
+		6A7742042B3A9319009DE503 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741E92B3A9319009DE503 /* CheckoutViewModel.swift */; };
+		6A7742052B3A9319009DE503 /* CheckoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741EA2B3A9319009DE503 /* CheckoutScreen.swift */; };
+		6A7742062B3A9319009DE503 /* CartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741EC2B3A9319009DE503 /* CartScreen.swift */; };
+		6A7742072B3A9319009DE503 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741ED2B3A9319009DE503 /* CartViewModel.swift */; };
+		6A7742082B3A9319009DE503 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741EF2B3A9319009DE503 /* BadgeView.swift */; };
+		6A7742092B3A9319009DE503 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741F02B3A9319009DE503 /* ItemDetailView.swift */; };
+		6A77420A2B3A9319009DE503 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741F12B3A9319009DE503 /* ItemListView.swift */; };
+		6A77420B2B3A9319009DE503 /* FoodieRestaurantAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741F42B3A9319009DE503 /* FoodieRestaurantAppApp.swift */; };
+		6A77420C2B3A9319009DE503 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7741F62B3A9319009DE503 /* CustomBackButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6A38FB312B31465E0049B85E /* ItemDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailScreen.swift; sourceTree = "<group>"; };
-		6A38FB342B3147D20049B85E /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
-		6A38FB372B3164170049B85E /* CartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreen.swift; sourceTree = "<group>"; };
-		6A38FB392B3164250049B85E /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
-		6A38FB3B2B3165AF0049B85E /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
 		6A4931F12B303AAF00F8772C /* FoodieRestaurantApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodieRestaurantApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A4931F42B303AAF00F8772C /* FoodieRestaurantAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieRestaurantAppApp.swift; sourceTree = "<group>"; };
-		6A4931F62B303AAF00F8772C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
-		6A4931F82B303AB100F8772C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6A4931FA2B303AB100F8772C /* FoodieRestaurantApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodieRestaurantApp.entitlements; sourceTree = "<group>"; };
-		6A4931FC2B303AB100F8772C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		6A4932032B303E6300F8772C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		6A4932062B303ED000F8772C /* ItemElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemElement.swift; sourceTree = "<group>"; };
-		6A49320D2B304C0900F8772C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		6A4932102B30678100F8772C /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
+		6A7741D32B3A9319009DE503 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		6A7741D52B3A9319009DE503 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A7741D72B3A9319009DE503 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6A7741D92B3A9319009DE503 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		6A7741DB2B3A9319009DE503 /* ItemElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemElement.swift; sourceTree = "<group>"; };
+		6A7741DC2B3A9319009DE503 /* CheckoutItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutItem.swift; sourceTree = "<group>"; };
+		6A7741DD2B3A9319009DE503 /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		6A7741E02B3A9319009DE503 /* ItemDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailScreen.swift; sourceTree = "<group>"; };
+		6A7741E12B3A9319009DE503 /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
+		6A7741E32B3A9319009DE503 /* SuccessViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessViewModel.swift; sourceTree = "<group>"; };
+		6A7741E42B3A9319009DE503 /* SuccessScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessScreen.swift; sourceTree = "<group>"; };
+		6A7741E62B3A9319009DE503 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		6A7741E72B3A9319009DE503 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		6A7741E92B3A9319009DE503 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
+		6A7741EA2B3A9319009DE503 /* CheckoutScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutScreen.swift; sourceTree = "<group>"; };
+		6A7741EC2B3A9319009DE503 /* CartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartScreen.swift; sourceTree = "<group>"; };
+		6A7741ED2B3A9319009DE503 /* CartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		6A7741EF2B3A9319009DE503 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		6A7741F02B3A9319009DE503 /* ItemDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
+		6A7741F12B3A9319009DE503 /* ItemListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
+		6A7741F22B3A9319009DE503 /* FoodieRestaurantApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = FoodieRestaurantApp.entitlements; sourceTree = "<group>"; };
+		6A7741F42B3A9319009DE503 /* FoodieRestaurantAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodieRestaurantAppApp.swift; sourceTree = "<group>"; };
+		6A7741F62B3A9319009DE503 /* CustomBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,35 +69,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6A38FB302B3146190049B85E /* DetailView */ = {
-			isa = PBXGroup;
-			children = (
-				6A38FB312B31465E0049B85E /* ItemDetailScreen.swift */,
-				6A38FB342B3147D20049B85E /* ItemDetailViewModel.swift */,
-			);
-			path = DetailView;
-			sourceTree = "<group>";
-		};
-		6A38FB332B3146980049B85E /* Resuables */ = {
-			isa = PBXGroup;
-			children = (
-				6A4932102B30678100F8772C /* ItemDetailView.swift */,
-				6A38FB3B2B3165AF0049B85E /* ItemListView.swift */,
-			);
-			path = Resuables;
-			sourceTree = "<group>";
-		};
-		6A38FB362B3163E60049B85E /* OrderView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OrderView;
-			sourceTree = "<group>";
-		};
 		6A4931E82B303AAF00F8772C = {
 			isa = PBXGroup;
 			children = (
-				6A4931F32B303AAF00F8772C /* FoodieRestaurantApp */,
+				6A7741D12B3A9319009DE503 /* FoodieRestaurantApp */,
 				6A4931F22B303AAF00F8772C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,88 +85,146 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6A4931F32B303AAF00F8772C /* FoodieRestaurantApp */ = {
+		6A7741D12B3A9319009DE503 /* FoodieRestaurantApp */ = {
 			isa = PBXGroup;
 			children = (
-				6A49320C2B30423C00F8772C /* NetworkManager */,
-				6A4932092B303EE800F8772C /* Resources */,
-				6A38FB332B3146980049B85E /* Resuables */,
-				6A4932082B303ED800F8772C /* Model */,
-				6A49320B2B303F4D00F8772C /* Modules */,
-				6A4931FB2B303AB100F8772C /* Preview Content */,
-				6A49320A2B303F3400F8772C /* Extras */,
-				6A4931FA2B303AB100F8772C /* FoodieRestaurantApp.entitlements */,
+				6A7741D22B3A9319009DE503 /* NetworkManager */,
+				6A7741D42B3A9319009DE503 /* Resources */,
+				6A7741D62B3A9319009DE503 /* Preview Content */,
+				6A7741D82B3A9319009DE503 /* Extensions */,
+				6A7741DA2B3A9319009DE503 /* Model */,
+				6A7741DE2B3A9319009DE503 /* Modules */,
+				6A7741EE2B3A9319009DE503 /* Resuables */,
+				6A7741F22B3A9319009DE503 /* FoodieRestaurantApp.entitlements */,
+				6A7741F32B3A9319009DE503 /* Extras */,
+				6A7741F52B3A9319009DE503 /* ViewModifiers */,
 			);
 			path = FoodieRestaurantApp;
 			sourceTree = "<group>";
 		};
-		6A4931FB2B303AB100F8772C /* Preview Content */ = {
+		6A7741D22B3A9319009DE503 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				6A4931FC2B303AB100F8772C /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		6A4932052B303E8600F8772C /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				6A4931F62B303AAF00F8772C /* HomeScreen.swift */,
-				6A49320D2B304C0900F8772C /* HomeViewModel.swift */,
-			);
-			path = HomeView;
-			sourceTree = "<group>";
-		};
-		6A4932082B303ED800F8772C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6A4932062B303ED000F8772C /* ItemElement.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6A4932092B303EE800F8772C /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6A4931F82B303AB100F8772C /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		6A49320A2B303F3400F8772C /* Extras */ = {
-			isa = PBXGroup;
-			children = (
-				6A4931F42B303AAF00F8772C /* FoodieRestaurantAppApp.swift */,
-			);
-			path = Extras;
-			sourceTree = "<group>";
-		};
-		6A49320B2B303F4D00F8772C /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				6A38FB362B3163E60049B85E /* OrderView */,
-				6A38FB302B3146190049B85E /* DetailView */,
-				6A49320F2B3057C500F8772C /* CartView */,
-				6A4932052B303E8600F8772C /* HomeView */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		6A49320C2B30423C00F8772C /* NetworkManager */ = {
-			isa = PBXGroup;
-			children = (
-				6A4932032B303E6300F8772C /* NetworkManager.swift */,
+				6A7741D32B3A9319009DE503 /* NetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		6A49320F2B3057C500F8772C /* CartView */ = {
+		6A7741D42B3A9319009DE503 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6A38FB372B3164170049B85E /* CartScreen.swift */,
-				6A38FB392B3164250049B85E /* CartViewModel.swift */,
+				6A7741D52B3A9319009DE503 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6A7741D62B3A9319009DE503 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741D72B3A9319009DE503 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6A7741D82B3A9319009DE503 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741D92B3A9319009DE503 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6A7741DA2B3A9319009DE503 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741DB2B3A9319009DE503 /* ItemElement.swift */,
+				6A7741DC2B3A9319009DE503 /* CheckoutItem.swift */,
+				6A7741DD2B3A9319009DE503 /* CartItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6A7741DE2B3A9319009DE503 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741DF2B3A9319009DE503 /* DetailView */,
+				6A7741E22B3A9319009DE503 /* SuccessView */,
+				6A7741E52B3A9319009DE503 /* HomeView */,
+				6A7741E82B3A9319009DE503 /* CheckoutView */,
+				6A7741EB2B3A9319009DE503 /* CartView */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		6A7741DF2B3A9319009DE503 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741E02B3A9319009DE503 /* ItemDetailScreen.swift */,
+				6A7741E12B3A9319009DE503 /* ItemDetailViewModel.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		6A7741E22B3A9319009DE503 /* SuccessView */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741E32B3A9319009DE503 /* SuccessViewModel.swift */,
+				6A7741E42B3A9319009DE503 /* SuccessScreen.swift */,
+			);
+			path = SuccessView;
+			sourceTree = "<group>";
+		};
+		6A7741E52B3A9319009DE503 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741E62B3A9319009DE503 /* HomeViewModel.swift */,
+				6A7741E72B3A9319009DE503 /* HomeScreen.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		6A7741E82B3A9319009DE503 /* CheckoutView */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741E92B3A9319009DE503 /* CheckoutViewModel.swift */,
+				6A7741EA2B3A9319009DE503 /* CheckoutScreen.swift */,
+			);
+			path = CheckoutView;
+			sourceTree = "<group>";
+		};
+		6A7741EB2B3A9319009DE503 /* CartView */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741EC2B3A9319009DE503 /* CartScreen.swift */,
+				6A7741ED2B3A9319009DE503 /* CartViewModel.swift */,
 			);
 			path = CartView;
+			sourceTree = "<group>";
+		};
+		6A7741EE2B3A9319009DE503 /* Resuables */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741EF2B3A9319009DE503 /* BadgeView.swift */,
+				6A7741F02B3A9319009DE503 /* ItemDetailView.swift */,
+				6A7741F12B3A9319009DE503 /* ItemListView.swift */,
+			);
+			path = Resuables;
+			sourceTree = "<group>";
+		};
+		6A7741F32B3A9319009DE503 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741F42B3A9319009DE503 /* FoodieRestaurantAppApp.swift */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
+		6A7741F52B3A9319009DE503 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				6A7741F62B3A9319009DE503 /* CustomBackButton.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,8 +285,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A4931FD2B303AB100F8772C /* Preview Assets.xcassets in Resources */,
-				6A4931F92B303AB100F8772C /* Assets.xcassets in Resources */,
+				6A7741F92B3A9319009DE503 /* Preview Assets.xcassets in Resources */,
+				6A7741F82B3A9319009DE503 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,17 +297,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A38FB382B3164180049B85E /* CartScreen.swift in Sources */,
-				6A4932042B303E6300F8772C /* NetworkManager.swift in Sources */,
-				6A4932112B30678100F8772C /* ItemDetailView.swift in Sources */,
-				6A4931F72B303AAF00F8772C /* HomeScreen.swift in Sources */,
-				6A38FB322B31465E0049B85E /* ItemDetailScreen.swift in Sources */,
-				6A4932072B303ED000F8772C /* ItemElement.swift in Sources */,
-				6A38FB3A2B3164250049B85E /* CartViewModel.swift in Sources */,
-				6A38FB3C2B3165AF0049B85E /* ItemListView.swift in Sources */,
-				6A49320E2B304C0900F8772C /* HomeViewModel.swift in Sources */,
-				6A4931F52B303AAF00F8772C /* FoodieRestaurantAppApp.swift in Sources */,
-				6A38FB352B3147D20049B85E /* ItemDetailViewModel.swift in Sources */,
+				6A7742042B3A9319009DE503 /* CheckoutViewModel.swift in Sources */,
+				6A77420C2B3A9319009DE503 /* CustomBackButton.swift in Sources */,
+				6A77420B2B3A9319009DE503 /* FoodieRestaurantAppApp.swift in Sources */,
+				6A7742012B3A9319009DE503 /* SuccessScreen.swift in Sources */,
+				6A7741FA2B3A9319009DE503 /* View+Extensions.swift in Sources */,
+				6A7741F72B3A9319009DE503 /* NetworkManager.swift in Sources */,
+				6A7742052B3A9319009DE503 /* CheckoutScreen.swift in Sources */,
+				6A7742022B3A9319009DE503 /* HomeViewModel.swift in Sources */,
+				6A7742072B3A9319009DE503 /* CartViewModel.swift in Sources */,
+				6A7742032B3A9319009DE503 /* HomeScreen.swift in Sources */,
+				6A7742092B3A9319009DE503 /* ItemDetailView.swift in Sources */,
+				6A7742082B3A9319009DE503 /* BadgeView.swift in Sources */,
+				6A7741FC2B3A9319009DE503 /* CheckoutItem.swift in Sources */,
+				6A7741FD2B3A9319009DE503 /* CartItem.swift in Sources */,
+				6A7741FB2B3A9319009DE503 /* ItemElement.swift in Sources */,
+				6A77420A2B3A9319009DE503 /* ItemListView.swift in Sources */,
+				6A7741FF2B3A9319009DE503 /* ItemDetailViewModel.swift in Sources */,
+				6A7742062B3A9319009DE503 /* CartScreen.swift in Sources */,
+				6A7742002B3A9319009DE503 /* SuccessViewModel.swift in Sources */,
+				6A7741FE2B3A9319009DE503 /* ItemDetailScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +458,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -406,7 +466,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = pranjal.FoodieRestaurantApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -434,7 +495,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -442,7 +503,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = pranjal.FoodieRestaurantApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
