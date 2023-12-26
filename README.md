@@ -1,5 +1,6 @@
 Created this project in MACOS SONOMA 14.1.1 and on XCode version 15.0.1
 Programming language: Swift(SwiftUI)
+Minimum Deployment: ios 16.0
 
 Pattern followed: MVVM architecture
 
